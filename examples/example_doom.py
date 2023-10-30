@@ -10,7 +10,7 @@ class NaiveAgent():
 		self.actions = actions
 
 	def pickAction(self, reward, obs):
-		return self.actions[np.random.randint(0, len(self.actions))]
+		return self.actions[np.random.integers(0, len(self.actions))]
 
 ###################################
 game = Doom(scenario="take_cover")

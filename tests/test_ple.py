@@ -20,7 +20,7 @@ class NaiveAgent():
     def __init__(self, actions):
         self.actions = actions
     def pickAction(self, reward, obs):
-        return self.actions[np.random.randint(0, len(self.actions))]
+        return self.actions[np.random.integers(0, len(self.actions))]
 
 
 class MyTestCase(unittest.TestCase):

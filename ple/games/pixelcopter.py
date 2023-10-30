@@ -254,8 +254,8 @@ class Pixelcopter(PyGameWrapper):
             )
 
     def _add_blocks(self):
-        x_pos = self.rng.randint(self.width, int(self.width * 1.5))
-        y_pos = self.rng.randint(
+        x_pos = self.rng.integers(self.width, int(self.width * 1.5))
+        y_pos = self.rng.integers(
             int(self.height * 0.25),
             int(self.height * 0.75)
         )

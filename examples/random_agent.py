@@ -12,7 +12,7 @@ class NaiveAgent():
         self.actions = actions
 
     def pickAction(self, reward, obs):
-        return self.actions[np.random.randint(0, len(self.actions))]
+        return self.actions[np.random.integers(0, len(self.actions))]
 
 ###################################
 game = RaycastMaze(
@@ -40,7 +40,7 @@ agent = NaiveAgent(p.getActionSet())
 p.init()
 
 # lets do a random number of NOOP's
-for i in range(np.random.randint(0, max_noops)):
+for i in range(np.random.integers(0, max_noops)):
     reward = p.act(p.NOOP)
 
 # start our training loop

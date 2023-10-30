@@ -297,7 +297,7 @@ if __name__ == "__main__":
     map_grid = make_box(map_grid, (6, 11), (12, 12), fill=0, isFilled=True)
     map_grid = make_box(map_grid, (2, 6), (7, 7), fill=0, isFilled=True)
 
-    map_grid[map_grid > 0] = np.random.randint(
+    map_grid[map_grid > 0] = np.random.integers(
         2, high=5, size=map_grid[map_grid > 0].shape)
 
     init_dir = (1.0, 0.0)

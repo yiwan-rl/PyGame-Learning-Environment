@@ -209,7 +209,7 @@ class RaycastMaze(PyGameWrapper, RayCastPlayer):
                         available_positions.append([y,x])
 
 
-        self.obj_loc = np.array([available_positions[self.rng.randint(0, high=len(available_positions))]])
+        self.obj_loc = np.array([available_positions[self.rng.integers(0, high=len(available_positions))]])
         self.map_[self.obj_loc[0][0], self.obj_loc[0][1]] = 2
 
         if self.angle_to_obj_rad() < 1.5:

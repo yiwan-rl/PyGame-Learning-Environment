@@ -106,7 +106,7 @@ class ExampleAgent():
     def act(self, state, epsilon=1.0):
         self.state.append(state)
 
-        action = self.rng.randint(0, self.num_actions)
+        action = self.rng.integers(0, self.num_actions)
         if len(self.state) == self.num_frames:  # we havent seen enough frames
             _state = np.array(self.state)
 
@@ -124,7 +124,7 @@ class ExampleAgent():
 
     def start_episode(self, N=3):
         self.env.reset_game()  # reset
-        for i in range(self.rng.randint(N)):
+        for i in range(self.rng.integers(N)):
             self.env.act(self.env.NOOP)  # perform a NOOP
 
     def end_episode(self):
@@ -155,7 +155,7 @@ class ReplayMemory():
         targets = np.zeros((agent.batch_size, agent.num_actions))
 
         seen = []
-        idx = agent.rng.randint(
+        idx = agent.rng.integers(
             0,
             high=len(
                 self.memory) -
@@ -164,7 +164,7 @@ class ReplayMemory():
 
         for i in range(agent.batch_size):
             while idx in seen:
-                idx = agent.rng.randint(0, high=len(
+                idx = agent.rng.integers(0, high=len(
                     self.memory) - agent.num_frames - 1)
 
             states = np.array([self.memory[idx + j][0]

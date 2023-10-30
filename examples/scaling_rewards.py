@@ -23,7 +23,7 @@ for i in range(1000):
     if p.game_over():
         p.reset_game()
 
-    action = actions[np.random.randint(0, len(actions))]  # random actions
+    action = actions[np.random.integers(0, len(actions))]  # random actions
     reward = p.act(action)
 
     print "Score: {:0.3f} | Reward: {:0.3f} ".format(p.score(), reward)
