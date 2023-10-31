@@ -52,7 +52,7 @@ class BirdPlayer(pygame.sprite.Sprite):
         self.pos_y = init_pos[1]
 
     def _oscillateStartPos(self):
-        offset = 8 * np.sin(self.rng.rand() * np.pi)
+        offset = 8 * np.sin(self.rng.uniform() * np.pi)
         self.pos_y += offset
 
     def flap(self):
@@ -349,7 +349,7 @@ class FlappyBird(base.PyGameWrapper):
         return self.score
 
     def _generatePipes(self, offset=0, pipe=None):
-        start_gap = self.rng.random_integers(
+        start_gap = self.rng.integers(
             self.pipe_min,
             self.pipe_max
         )
