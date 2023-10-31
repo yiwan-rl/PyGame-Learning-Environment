@@ -1,9 +1,9 @@
 import numpy as np
 from PIL import Image  # pillow
 import sys
-
 import pygame
 from .games.base.pygamewrapper import PyGameWrapper
+from gymnasium.utils import seeding
 
 class PLE(object):
     """
@@ -84,15 +84,17 @@ class PLE(object):
         Python function which takes a dict representing game state and
         returns a numpy array.
 
-    rng: numpy.random.RandomState, int, array_like or None. (default: 24)
-        Number generator which is used by PLE and the games.
+    seed: int. (default: 24) 
+        This seed is only used to create an env instance so that init
+        function can finish. Users should always call reset to seed the environment
+        and should not use this seed.
 
     """
 
     def __init__(self,
                  game, fps=30, frame_skip=1, num_steps=1,
                  reward_values={}, force_fps=True, display_screen=False,
-                 add_noop_action=True, state_preprocessor=None, rng=24):
+                 add_noop_action=True, state_preprocessor=None, seed=24):
 
         self.game = game
         self.fps = fps
@@ -114,10 +116,7 @@ class PLE(object):
 
 
         if isinstance(self.game, PyGameWrapper):
-            if isinstance(rng, np.random.RandomState):
-                self.rng = rng
-            else:
-                self.rng = np.random.RandomState(rng)
+            self.rng, _ = seeding.np_random(seed)
 
             # some pygame games preload the images
             # to speed resetting and inits up.
@@ -126,7 +125,7 @@ class PLE(object):
             # in order to use doom, install following https://github.com/openai/doom-py
             from .games.base.doomwrapper import DoomWrapper
             if isinstance(self.game, DoomWrapper):
-                self.rng = rng
+                self.rng, _ = seeding.np_random(seed)
         
         self.game.setRNG(self.rng)
         self.init()

@@ -79,7 +79,7 @@ class Ball(pygame.sprite.Sprite):
 
         # Little randomness in order not to stuck in a static loop
         if is_pad_hit:
-            self.vel.y += self.rng.random_sample() * 0.001 - 0.0005
+            self.vel.y += self.rng.uniform() * 0.001 - 0.0005
 
         if self.pos.y - self.radius <= 0:
             self.vel.y *= -0.99
@@ -338,7 +338,7 @@ class Pong(PyGameWrapper):
     def reset(self):
         self.init()
         # after game over set random direction of ball otherwise it will always be the same
-        self._reset_ball(1 if self.rng.random_sample() > 0.5 else -1)
+        self._reset_ball(1 if self.rng.uniform() > 0.5 else -1)
 
 
     def _reset_ball(self, direction):
@@ -346,7 +346,7 @@ class Pong(PyGameWrapper):
 
         # we go in the same direction that they lost in but at starting vel.
         self.ball.vel.x = self.ball.speed * direction
-        self.ball.vel.y = (self.rng.random_sample() *
+        self.ball.vel.y = (self.rng.uniform() *
                            self.ball.speed) - self.ball.speed * 0.5
 
     def step(self, dt):
