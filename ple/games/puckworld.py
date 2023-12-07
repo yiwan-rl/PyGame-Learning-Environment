@@ -250,7 +250,7 @@ class PuckWorld(PyGameWrapper):
 
         reward /= 1000
         self.score += reward
-        if self.ticks % 500 == 0:
+        if self.ticks % 200 == 0:
             x, y = self._rngCreepPos()
             self.good_creep.pos.x = x
             self.good_creep.pos.y = y
