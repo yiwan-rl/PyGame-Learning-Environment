@@ -192,12 +192,13 @@ class PuckWorld(PyGameWrapper):
             self.AGENT_INIT_POS,
             self.width,
             self.height)
-
+        good_x = self.rng.uniform(0, 1)
+        good_y = self.rng.uniform(0, 1)
         self.good_creep = Creep(
             self.CREEP_GOOD['color'],
             self.CREEP_GOOD['radius'],
             self._rngCreepPos(),
-            (1, 1),
+            (good_x, good_y),
             0.0,
             1.0,
             "GOOD",
