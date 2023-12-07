@@ -248,7 +248,6 @@ class PuckWorld(PyGameWrapper):
                 (dist_to_bad - self.CREEP_BAD['radius_outer']
                  ) / float(self.CREEP_BAD['radius_outer'])
 
-        reward /= 1000
         self.score += reward
         if self.ticks % 200 == 0:
             x, y = self._rngCreepPos()
