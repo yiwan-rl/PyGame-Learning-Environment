@@ -244,7 +244,7 @@ class PuckWorld(PyGameWrapper):
 
         reward = -dist_to_good
         if dist_to_bad < self.CREEP_BAD['radius_outer']:
-            reward += 2.0 * \
+            reward += 4.0 * \
                 (dist_to_bad - self.CREEP_BAD['radius_outer']
                  ) / float(self.CREEP_BAD['radius_outer'])
 
