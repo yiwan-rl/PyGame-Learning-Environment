@@ -206,10 +206,11 @@ class PuckWorld(PyGameWrapper):
             self.height,
             0.0  # jitter
         )
-
+        bad_x = self.rng.uniform(0, 1)
+        bad_y = self.rng.uniform(0, 1)
         self.bad_creep = PuckCreep(
-            (self.width,
-             self.height),
+            (bad_x,
+             bad_y),
             self.CREEP_BAD,
             self.screen_dim[0] * 0.75,
             self.screen_dim[1] * 0.75)
